@@ -1,14 +1,28 @@
 import moment from 'moment';
 import Symbol from 'es6-symbol';
 
-import {INTERVALS} from './intervals'
+//-----------------------------------------------------------------------------
+// Constants
+//-----------------------------------------------------------------------------
+
+const INTERVALS = {
+    year: true,
+    quarter: true,
+    month: true,
+    week: true,
+    day: true,
+    hour: true,
+    minute: true,
+    second: true
+};
+
 
 //-----------------------------------------------------------------------------
 // Date Ranges
 //-----------------------------------------------------------------------------
 
 export class DateRange {
-    range(start,end){
+    constructor(start, end) {
         let s = start;
         let e = end;
 
@@ -23,9 +37,6 @@ export class DateRange {
 
         this.start = (s === null) ? moment(-8640000000000000) : moment(s);
         this.end = (e === null) ? moment(8640000000000000) : moment(e);
-    }
-    constructor(start, end) {
-       this.range(start,end);
     }
 
     adjacent(other) {
@@ -43,7 +54,7 @@ export class DateRange {
         return null;
     }
 
-    by(interval, options = {exclusive: false, step: 1}) {
+    by(interval, options = { exclusive: false, step: 1 }) {
         const range = this;
 
         return {
@@ -72,7 +83,7 @@ export class DateRange {
         };
     }
 
-    byRange(interval, options = {exclusive: false, step: 1}) {
+    byRange(interval, options = { exclusive: false, step: 1 }) {
         const range = this;
         const step = options.step || 1;
         const diff = this.valueOf() / interval.valueOf() / step;
@@ -83,7 +94,7 @@ export class DateRange {
         return {
             [Symbol.iterator]() {
                 if (unit === Infinity) {
-                    return {done: true};
+                    return { done: true };
                 }
 
                 return {
@@ -115,7 +126,7 @@ export class DateRange {
         return new this.constructor(this.start, this.end);
     }
 
-    contains(other, options = {exclusive: false}) {
+    contains(other, options = { exclusive: false }) {
         const start = this.start.valueOf();
         const end = this.end.valueOf();
         let oStart = other.valueOf();
@@ -170,7 +181,7 @@ export class DateRange {
         return this.isEqual(other);
     }
 
-    overlaps(other, options = {adjacent: false}) {
+    overlaps(other, options = { adjacent: false }) {
         const intersect = (this.intersect(other) !== null);
 
         if (options.adjacent && !intersect) {
@@ -180,7 +191,7 @@ export class DateRange {
         return intersect;
     }
 
-    reverseBy(interval, options = {exclusive: false, step: 1}) {
+    reverseBy(interval, options = { exclusive: false, step: 1 }) {
         const range = this;
 
         return {
@@ -209,7 +220,7 @@ export class DateRange {
         };
     }
 
-    reverseByRange(interval, options = {exclusive: false, step: 1}) {
+    reverseByRange(interval, options = { exclusive: false, step: 1 }) {
         const range = this;
         const step = options.step || 1;
         const diff = this.valueOf() / interval.valueOf() / step;
@@ -220,7 +231,7 @@ export class DateRange {
         return {
             [Symbol.iterator]() {
                 if (unit === Infinity) {
-                    return {done: true};
+                    return { done: true };
                 }
 
                 return {
@@ -315,7 +326,7 @@ export function extendMoment(moment) {
     /**
      * Check if the current moment is within a given date range.
      */
-    moment.fn.within = function (range) {
+    moment.fn.within = function(range) {
         return range.contains(this.toDate());
     };
 
