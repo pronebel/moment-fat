@@ -4,5 +4,6 @@ dist/
 dests/
 docker/dests/
 .idea/
+/.source
 mochawesome-reports
 npm-debug.log
