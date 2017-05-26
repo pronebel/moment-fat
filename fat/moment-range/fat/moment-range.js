@@ -56,19 +56,19 @@ export class DateRange {
         return null;
     }
 
-    by(interval, options = {exclusive: false, step: 1}) {
+    by(interval, options = {exclusive: false, step: 1}) {// change
         const range = this;
 
         return {
             [Symbol.iterator]() {
                 const exclusive = options.exclusive || false;
                 const step = options.step || 1;
-                const diff = Math.abs(range.start.diff(range.end, interval)) / step;
+                const diff = Math.abs(fake.diff(range.start,range.end, interval)) / step;
                 let iteration = 0;
 
                 return {
                     next() {
-                        const current = range.start.clone().add((iteration * step), interval);
+                        const current = fake.add(fake.clone(range.start),(iteration * step), interval);
                         const done = exclusive
                             ? !(iteration < diff)
                             : !(iteration <= diff);
@@ -85,7 +85,7 @@ export class DateRange {
         };
     }
 
-    byRange(interval, options = {exclusive: false, step: 1}) {
+    byRange(interval, options = {exclusive: false, step: 1}) { //change
         const range = this;
         const step = options.step || 1;
         const diff = this.valueOf() / interval.valueOf() / step;
@@ -101,7 +101,7 @@ export class DateRange {
 
                 return {
                     next() {
-                        const current = moment(range.start.valueOf() + (interval.valueOf() * iteration * step));
+                        const current = new Date(range.start.valueOf() + (interval.valueOf() * iteration * step));
                         const done = ((unit === diff) && exclusive)
                             ? !(iteration < unit)
                             : !(iteration <= unit);
@@ -194,7 +194,7 @@ export class DateRange {
         return intersect;
     }
 
-    reverseBy(interval, options = {exclusive: false, step: 1}) { // change
+    reverseBy(interval, options = {exclusive: false, step: 1}) { // change fake
         const range = this;
 
         return {
