@@ -7,9 +7,9 @@ export let isSame = function (sdata, input, units) {
 
 export let min = function () {
     var args = [].slice.call(arguments, 0);
-    return moment.min(args);
+    return Math.min(args);
 }
 export let max = function () {
     var args = [].slice.call(arguments, 0);
-    return moment.max(args);
+    return Math.max(args);
 }

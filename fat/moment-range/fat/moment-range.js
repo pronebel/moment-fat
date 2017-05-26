@@ -301,6 +301,11 @@ export class DateRange {
 // Moment Extensions
 //-----------------------------------------------------------------------------
 
+export function DateRangeCreate(start,end){
+    return new DateRange(start, end);
+}
+
+
 export function extendMoment(moment) {
     /**
      * Build a date range.
