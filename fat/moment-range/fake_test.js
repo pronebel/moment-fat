@@ -20,7 +20,7 @@ describe('DateRange', function() {
   //const m2 = moment.utc('11-05-1996', 'MM-DD-YYYY');
   //const m3 = moment.utc('08-12-1996', 'MM-DD-YYYY');
   //const m4 = moment.utc('01-01-2012', 'MM-DD-YYYY');
-  //const sStart = '1996-08-12T00:00:00.000Z';
+  const sStart = '1996-08-12T00:00:00.000Z';
   const sEnd = '2012-01-01T00:00:00.000Z';
 
   describe('constructor', function() {
@@ -154,15 +154,15 @@ describe('DateRange', function() {
     });
   });
 
-  // describe('#clone()', function() {
-  //   it('should deep clone range', function() {
-  //     const dr1 = moment().range(sStart, sEnd);
-  //     const dr2 = dr1.clone();
-  //
-  //     dr2.start.add('days', 2);
-  //     expect(dr1.start.toDate()).to.not.equal(dr2.start.toDate());
-  //   });
-  // });
+  describe('#clone()', function() {
+    it('should deep clone range', function() {
+      const dr1 = DateRangeCreate(sStart, sEnd);
+      const dr2 = dr1.clone();
+
+      fake.add(dr2.start,2,'days');
+      expect(dr1.start).to.not.equal(dr2.start);
+    });
+  });
 
   // describe('#by', function() {
   //   it('should return a valid iterator', function() {
