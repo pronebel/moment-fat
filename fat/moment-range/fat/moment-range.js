@@ -1,6 +1,8 @@
 import moment from 'moment';
 import Symbol from 'es6-symbol';
 
+import * as fake  from './fake'
+
 //-----------------------------------------------------------------------------
 // Constants
 //-----------------------------------------------------------------------------
@@ -35,20 +37,20 @@ export class DateRange {
             }
         }
 
-        this.start = (s === null) ? moment(-8640000000000000) : moment(s);
-        this.end = (e === null) ? moment(8640000000000000) : moment(e);
+        this.start = (s === null) ? new Date(-8640000000000000) : new Date(s);
+        this.end = (e === null) ? new Date(8640000000000000) : new Date(e);
     }
 
     adjacent(other) {
-        const sameStartEnd = this.start.isSame(other.end);
-        const sameEndStart = this.end.isSame(other.start);
+        const sameStartEnd = fake.isSame(this.start,other.end);
+        const sameEndStart = fake.isSame(this.end,other.start);
 
         return (sameStartEnd && (other.start.valueOf() <= this.start.valueOf())) || (sameEndStart && (other.end.valueOf() >= this.end.valueOf()));
     }
 
     add(other) {
         if (this.overlaps(other)) {
-            return new this.constructor(moment.min(this.start, other.start), moment.max(this.end, other.end));
+            return new this.constructor(fake.min(this.start, other.start), fake.max(this.end, other.end));
         }
 
         return null;
