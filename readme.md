@@ -1,5 +1,18 @@
 
 
+moment-range
+有意思  https://github.com/niksy/parse-human-date-range
+https://github.com/component/date-range
+https://github.com/jrit/daterange.js
+
+
+## feature,
+
+- sort: 自动按照时间先后排序
+- date-range-array : 列出区间内的所有日期  https://github.com/davidguttman/date-range-array
+
+
+
 
 
 ### tools: analyse moment.js dependency

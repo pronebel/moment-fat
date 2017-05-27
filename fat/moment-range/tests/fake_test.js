@@ -606,90 +606,10 @@ describe('DateRange', function() {
   //   });
   // });
   //
-  // describe('#isSame()', function() {
-  //   it('should true if the start and end of both DateRange objects equal', function() {
-  //     const dr1 = moment.range(d1, d2);
-  //     const dr2 = moment.range(d1, d2);
-  //
-  //     expect(dr1.isSame(dr2)).to.be(true);
-  //   });
-  //
-  //   it('should false if the starts differ between objects', function() {
-  //     const dr1 = moment.range(d1, d3);
-  //     const dr2 = moment.range(d2, d3);
-  //
-  //     expect(dr1.isSame(dr2)).to.be(false);
-  //   });
-  //
-  //   it('should false if the ends differ between objects', function() {
-  //     const dr1 = moment.range(d1, d2);
-  //     const dr2 = moment.range(d1, d3);
-  //
-  //     expect(dr1.isSame(dr2)).to.be(false);
-  //   });
-  // });
-  //
-  // describe('#toString()', function() {
-  //   it('should be a correctly formatted ISO8601 Time Interval', function() {
-  //     const start = moment.utc('2015-01-17T09:50:04+00:00');
-  //     const end   = moment.utc('2015-04-17T08:29:55+00:00');
-  //     const dr = moment.range(start, end);
-  //
-  //     expect(dr.toString()).to.equal(start.format() + '/' + end.format());
-  //   });
-  // });
-  //
-  // describe('#valueOf()', function() {
-  //   it('should be the value of the range in milliseconds', function() {
-  //     const dr = moment.range(d1, d2);
-  //
-  //     expect(dr.valueOf()).to.eql(d2.getTime() - d1.getTime());
-  //   });
-  //
-  //   it('should correctly coerce to a number', function() {
-  //     const dr1 = moment.range(d4, d2);
-  //     const dr2 = moment.range(d3, d2);
-  //
-  //     expect((dr1 > dr2)).to.be(true);
-  //   });
-  // });
-  //
-  // describe('#toDate()', function() {
-  //   it('should be a array like [dateObject, dateObject]', function() {
-  //     const dr = moment.range(d1, d2);
-  //     const drTodate = dr.toDate();
-  //
-  //     expect(drTodate.length).to.eql(2);
-  //     expect(drTodate[0].valueOf()).to.eql(d1.valueOf());
-  //     expect(drTodate[1].valueOf()).to.eql(d2.valueOf());
-  //   });
-  // });
-  //
-  // describe('#diff()', function() {
-  //   it('should use momentjs’ diff method', function() {
-  //     const dr = moment.range(d1, d2);
-  //
-  //     expect(dr.diff('months')).to.equal(3);
-  //     expect(dr.diff('days')).to.equal(92);
-  //     expect(dr.diff()).to.equal(7948800000);
-  //   });
-  //
-  //   it('should optionally pass the rounded argument', function() {
-  //     const d1 = new Date(Date.UTC(2011, 4, 1));
-  //     const d2 = new Date(Date.UTC(2011, 4, 5, 12));
-  //     const dr = moment.range(d1, d2);
-  //
-  //     expect(dr.diff('days', true)).to.equal(4.5);
-  //   });
-  // });
-  //
-  // describe('#center()', function() {
-  //   it('should use momentjs’ center method', function() {
-  //     const d1 = new Date(Date.UTC(2011, 2, 5));
-  //     const d2 = new Date(Date.UTC(2011, 3, 5));
-  //     const dr = moment.range(d1, d2);
-  //
-  //     expect(dr.center().valueOf()).to.equal(1300622400000);
-  //   });
-  // });
+
+
+
+
+
+
  });

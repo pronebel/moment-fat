@@ -145,7 +145,7 @@ export class DateRange {
 
         return (startInRange && endInRange);
     }
-
+    //todo: 考虑diff只管算出相差的毫秒值,至于 毫秒值是多少天,等交给专门的库去处理
     diff(unit, rounded) { // fake
         return fake.diff(this.end, this.start, unit, rounded);
     }

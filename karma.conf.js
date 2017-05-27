@@ -24,7 +24,7 @@ module.exports = function(config) {
     },
 
     files: [
-      { pattern: 'fat/moment-range/tests/by.spec.js', watched: false }
+      { pattern: 'fat/moment-range/tests/*.spec.js', watched: false }
     ],
 
     frameworks: ['babel-polyfill', 'mocha', 'expect'],
