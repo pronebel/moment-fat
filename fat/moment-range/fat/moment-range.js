@@ -1,4 +1,3 @@
-import moment from 'moment';
 import Symbol from 'es6-symbol';
 
 import * as fake  from './fake'

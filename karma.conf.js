@@ -24,7 +24,7 @@ module.exports = function(config) {
     },
 
     files: [
-      { pattern: 'fat/moment-range/*_test.js', watched: false }
+      { pattern: 'fat/moment-range/tests/*.spec.js', watched: false }
     ],
 
     frameworks: ['babel-polyfill', 'mocha', 'expect'],
@@ -42,7 +42,7 @@ module.exports = function(config) {
     ],
 
     preprocessors: {
-      'fat/moment-range/*_test.js': ['webpack', 'sourcemap']
+      'fat/moment-range/tests/*.spec.js': ['webpack', 'sourcemap']
     },
 
     reporters: ['dots'],
