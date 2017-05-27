@@ -49,7 +49,7 @@ export class DateRange {
 
     add(other) { // fake
         if (this.overlaps(other)) {
-            return new this.constructor(fake.min(this.start, other.start), fake.max(this.end, other.end));
+            return new this.constructor(Math.min(this.start, other.start), Math.max(this.end, other.end));
         }
 
         return null;
@@ -67,7 +67,7 @@ export class DateRange {
 
                 return {
                     next() {
-                        const current = fake.add(fake.clone(range.start),(iteration * step), interval);
+                        const current = fake.add(new Date(range.start.valueOf()),(iteration * step), interval);
                         console.log(current);
                         const done = exclusive
                             ? !(iteration < diff)
@@ -206,7 +206,7 @@ export class DateRange {
 
                 return {
                     next() {
-                        const current = fake.subtract(fake.clone(range.end),(iteration * step), interval);
+                        const current = fake.subtract(new Date(range.end.valueOf()),(iteration * step), interval);
                         const done = exclusive
                             ? !(iteration < diff)
                             : !(iteration <= diff);

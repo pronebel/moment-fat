@@ -20,3 +20,8 @@ https://github.com/jrit/daterange.js
     npm -g install madge
     yum install  Graphviz
     madge --image ast/locale-list.svg ./fat/moment/locale
+
+
+### todo:
+
+compare: Math.min(date1,date2)  vs   moment.min(m1,m2)

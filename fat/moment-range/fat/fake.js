@@ -5,19 +5,6 @@ export let isSame = function (sdate, input, units) {
     return moment(sdate).isSame(input, units);
 }
 
-export let min = function () {
-    var args = [].slice.call(arguments, 0);
-    return Math.min(args);
-}
-export let max = function () {
-    var args = [].slice.call(arguments, 0);
-    return Math.max(args);
-}
-
-export let clone = function (date) {
-    return new Date(date.valueOf());
-}
-
 export let diff = function (sdate,input, units, asFloat) {
     return moment(sdate).diff(input, units,asFloat);
 }
