@@ -110,10 +110,10 @@ describe('#by', function() {
     const options = { exclusive: true };
     let acc;
 
-    acc = Array.from(dr.by('m')).map(m => m.getUTCMonth()+1);
+    acc = Array.from(dr.by('m')).map(m => m.getUTCMinutes());
     expect(acc).to.eql(['0', '1', '2', '3', '4', '5', '6']);
 
-    acc = Array.from(dr.by('m', options)).map(m => m.getUTCMonth()+1);
+    acc = Array.from(dr.by('m', options)).map(m => m.getUTCMinutes());
     expect(acc).to.eql(['0', '1', '2', '3', '4', '5']);
   });
 
