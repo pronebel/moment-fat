@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
   devtool: 'source-map',
-  entry: './fat/moment-range/moment-range.js',
+  entry: './fat/moment-range/fat/moment-range.js',
   externals: {
     moment: 'moment'
   },
@@ -42,7 +42,7 @@ module.exports = {
     filename: 'moment-range.js',
     library: 'moment-range',
     libraryTarget: 'umd',
-    path: './dist/',
+    path: path.resolve(__dirname, './dist'),
     umdNamedDefine: true
   },
   plugins: [

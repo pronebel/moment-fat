@@ -304,7 +304,7 @@ export class DateRange {
 export function DateRangeCreate(start, end) {
     return new DateRange(start, end);
 }
-
+window.DateRange = DateRangeCreate;
 
 export function extendMoment(moment) {
     /**

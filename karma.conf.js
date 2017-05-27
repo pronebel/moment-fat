@@ -15,7 +15,7 @@ module.exports = function(config) {
       terminal: false
     },
 
-    browsers: ['PhantomJS', 'Chrome'],
+    browsers: ['Chrome'],//PhantomJS
 
     client: {
       mocha: {
@@ -24,7 +24,7 @@ module.exports = function(config) {
     },
 
     files: [
-      { pattern: 'fat/moment-range/tests/*.spec.js', watched: false }
+      { pattern: 'fat/moment-range/tests/by.spec.js', watched: false }
     ],
 
     frameworks: ['babel-polyfill', 'mocha', 'expect'],
@@ -47,7 +47,7 @@ module.exports = function(config) {
 
     reporters: ['dots'],
 
-    singleRun: true,
+    singleRun: false,
 
     webpack: webpackConfig,
 
