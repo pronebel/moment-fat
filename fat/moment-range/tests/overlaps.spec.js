@@ -23,12 +23,6 @@ const m2 = new Date('11-05-1996');
 const m3 = new Date('08-12-1996');
 const m4 = new Date('01-01-2012');
 
-//const m1 = moment.utc('06-05-1996', 'MM-DD-YYYY');
-//const m2 = moment.utc('11-05-1996', 'MM-DD-YYYY');
-//const m3 = moment.utc('08-12-1996', 'MM-DD-YYYY');
-//const m4 = moment.utc('01-01-2012', 'MM-DD-YYYY');
-const sStart = '1996-08-12T00:00:00.000Z';
-const sEnd = '2012-01-01T00:00:00.000Z';
 
 
 

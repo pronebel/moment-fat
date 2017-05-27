@@ -7,9 +7,6 @@ import expect from 'expect.js';
 import { DateRange,DateRangeCreate } from '../fat/moment-range';
 import * as fake  from '../fat/fake'
 
-function isDate(date){
-    return date instanceof Date
-}
 
 
 const d1 = new Date(Date.UTC(2011, 2, 5));

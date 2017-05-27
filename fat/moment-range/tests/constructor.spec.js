@@ -85,7 +85,7 @@ describe('constructor', function() {
         expect(isDate(dr.end)).to.be(true);
     });
 
-    /* it('should allow initialization with moment interval strings', function() {
+ /*    it('should allow initialization with moment interval strings', function() {
      const date = moment('2016-12-12T11:12:18.607');
      const quarterStart = moment('2016-10-01T00:00:00.000');
      const quarterEnd = moment('2016-12-31T23:59:59.999');
