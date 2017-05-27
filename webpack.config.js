@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
   devtool: 'source-map',
-  entry: './fat/moment-range/fat/moment-range.js',
+  entry: ['./fat/moment-range/fat/moment-range.js','./fat/moment/fat/'],
   externals: {
     moment: 'moment'
   },
