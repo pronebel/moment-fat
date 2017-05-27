@@ -7,21 +7,6 @@ import expect from 'expect.js';
 import { DateRange,DateRangeCreate } from '../fat/moment-range';
 import * as fake  from '../fat/fake'
 
-function isDate(date){
-    return date instanceof Date
-}
-
-
-const d1 = new Date(Date.UTC(2011, 2, 5));
-const d2 = new Date(Date.UTC(2011, 5, 5));
-const d3 = new Date(Date.UTC(2011, 4, 9));
-const d4 = new Date(Date.UTC(1988, 0, 1));
-//const m1 = moment.utc('06-05-1996', 'MM-DD-YYYY');
-//const m2 = moment.utc('11-05-1996', 'MM-DD-YYYY');
-//const m3 = moment.utc('08-12-1996', 'MM-DD-YYYY');
-//const m4 = moment.utc('01-01-2012', 'MM-DD-YYYY');
-const sStart = '1996-08-12T00:00:00.000Z';
-const sEnd = '2012-01-01T00:00:00.000Z';
 
 describe('#by', function() {
   it('should return a valid iterator', function() {
@@ -74,7 +59,7 @@ describe('#by', function() {
 
     expect(acc).to.eql([2011, 2012, 2013]);
   });
-
+  // todo: check to readme
   // it('should iterate correctly by year over a moment()-constructed range when leap years are involved', function() {
   //   const dr1 = moment.range(moment('2011', 'YYYY'), moment('2013', 'YYYY'));
   //
@@ -93,61 +78,61 @@ describe('#by', function() {
   //   expect(acc).to.eql(['2012-01', '2012-02', '2012-03']);
   // });
 
-  // it('should iterate correctly by month over a Date-contstructed range when leap years are involved', function() {
-  //   const d1 = new Date(Date.UTC(2012, 0));
-  //   const d2 = new Date(Date.UTC(2012, 2));
-  //   const dr1 = DateRangeCreate(d1, d2);
-  //
-  //   const i1 = dr1.by('months');
-  //   const acc = Array.from(i1).map(m => m.utc().format('YYYY-MM'));
-  //
-  //   expect(acc).to.eql(['2012-01', '2012-02', '2012-03']);
-  // });
+  it('should iterate correctly by month over a Date-contstructed range when leap years are involved', function() {
+    const d1 = new Date(Date.UTC(2012, 0));
+    const d2 = new Date(Date.UTC(2012, 2));
+    const dr1 = DateRangeCreate(d1, d2);
 
-  // it('should not include .end in the iteration if exclusive is set to true when iterating by string', function() {
-  //   const my1 = moment('2014-04-02T00:00:00.000Z');
-  //   const my2 = moment('2014-04-04T00:00:00.000Z');
-  //   const dr1 = moment.range(my1, my2);
-  //   const options = { exclusive: true };
-  //   let acc;
-  //
-  //   acc = Array.from(dr1.by('d', options)).map(m => m.utc().format('YYYY-MM-DD'));
-  //   expect(acc).to.eql(['2014-04-02', '2014-04-03']);
-  //
-  //   acc = Array.from(dr1.by('d')).map(m => m.utc().format('YYYY-MM-DD'));
-  //   expect(acc).to.eql(['2014-04-02', '2014-04-03', '2014-04-04']);
-  // });
+    const i1 = dr1.by('months');
+    const acc = Array.from(i1).map(m => m.getUTCFullYear()+"-"+(m.getUTCMonth()+1));
 
-  // it('should be exlusive when using by with minutes as well', function() {
-  //   const d1 = moment('2014-01-01T00:00:00.000Z');
-  //   const d2 = moment('2014-01-01T00:06:00.000Z');
-  //   const dr = moment.range(d1, d2);
-  //   const options = { exclusive: true };
-  //   let acc;
-  //
-  //   acc = Array.from(dr.by('m')).map(m => m.utc().format('mm'));
-  //   expect(acc).to.eql(['00', '01', '02', '03', '04', '05', '06']);
-  //
-  //   acc = Array.from(dr.by('m', options)).map(m => m.utc().format('mm'));
-  //   expect(acc).to.eql(['00', '01', '02', '03', '04', '05']);
-  // });
+    expect(acc).to.eql(['2012-1', '2012-2', '2012-3']);
+  });
 
-  // it('should correctly iterate by a given step', function() {
-  //   const my1 = moment('2014-04-02T00:00:00.000Z');
-  //   const my2 = moment('2014-04-08T00:00:00.000Z');
-  //   const dr1 = moment.range(my1, my2);
-  //
-  //   const acc = Array.from(dr1.by('days', { step: 2 })).map(m => m.utc().format('DD'));
-  //   expect(acc).to.eql(['02', '04', '06', '08']);
-  // });
+  it('should not include .end in the iteration if exclusive is set to true when iterating by string', function() {
+    const my1 = new Date('2014-04-02T00:00:00.000Z');
+    const my2 = new Date('2014-04-04T00:00:00.000Z');
+    const dr1 = DateRangeCreate(my1, my2);
+    const options = { exclusive: true };
+    let acc;
 
-  // it('should correctly iterate by a given step when exclusive', function() {
-  //   const my1 = moment('2014-04-02T00:00:00.000Z');
-  //   const my2 = moment('2014-04-08T00:00:00.000Z');
-  //   const dr1 = moment.range(my1, my2);
-  //
-  //   const acc = Array.from(dr1.by('days', { exclusive: true, step: 2 })).map(m => m.utc().format('DD'));
-  //   expect(acc).to.eql(['02', '04', '06']);
-  // });
+    acc = Array.from(dr1.by('d', options)).map(m => m.getUTCFullYear()+"-"+(m.getUTCMonth()+1)+"-"+m.getUTCDate());
+    expect(acc).to.eql(['2014-4-2', '2014-4-3']);
+
+    acc = Array.from(dr1.by('d')).map(m => m.getUTCFullYear()+"-"+(m.getUTCMonth()+1)+"-"+m.getUTCDate());
+    expect(acc).to.eql(['2014-4-2', '2014-4-3', '2014-4-4']);
+  });
+
+  it('should be exlusive when using by with minutes as well', function() {
+    const d1 = new Date('2014-01-01T00:00:00.000Z');
+    const d2 = new Date('2014-01-01T00:06:00.000Z');
+    const dr = DateRangeCreate(d1, d2);
+    const options = { exclusive: true };
+    let acc;
+
+    acc = Array.from(dr.by('m')).map(m => m.getUTCMonth()+1);
+    expect(acc).to.eql(['0', '1', '2', '3', '4', '5', '6']);
+
+    acc = Array.from(dr.by('m', options)).map(m => m.getUTCMonth()+1);
+    expect(acc).to.eql(['0', '1', '2', '3', '4', '5']);
+  });
+
+  it('should correctly iterate by a given step', function() {
+    const my1 = new Date('2014-04-02T00:00:00.000Z');
+    const my2 = new Date('2014-04-08T00:00:00.000Z');
+    const dr1 = DateRangeCreate(my1, my2);
+
+    const acc = Array.from(dr1.by('days', { step: 2 })).map(m => m.getUTCDate());
+    expect(acc).to.eql(['2', '4', '6', '8']);
+  });
+
+  it('should correctly iterate by a given step when exclusive', function() {
+    const my1 = new Date('2014-04-02T00:00:00.000Z');
+    const my2 = new Date('2014-04-08T00:00:00.000Z');
+    const dr1 = DateRangeCreate(my1, my2);
+
+    const acc = Array.from(dr1.by('days', { exclusive: true, step: 2 })).map(m => m.getUTCDate());
+    expect(acc).to.eql(['2', '4', '6']);
+  });
 });
 

@@ -16,10 +16,7 @@ const d1 = new Date(Date.UTC(2011, 2, 5));
 const d2 = new Date(Date.UTC(2011, 5, 5));
 const d3 = new Date(Date.UTC(2011, 4, 9));
 const d4 = new Date(Date.UTC(1988, 0, 1));
-//const m1 = moment.utc('06-05-1996', 'MM-DD-YYYY');
-//const m2 = moment.utc('11-05-1996', 'MM-DD-YYYY');
-//const m3 = moment.utc('08-12-1996', 'MM-DD-YYYY');
-//const m4 = moment.utc('01-01-2012', 'MM-DD-YYYY');
+
 const sStart = '1996-08-12T00:00:00.000Z';
 const sEnd = '2012-01-01T00:00:00.000Z';
 
@@ -38,7 +35,9 @@ describe('constructor', function() {
         expect(isDate(dr.end)).to.be(true);
     });
 
-    /* it('should allow initialization with Moment object', function() {
+    /*
+    todo: check to readme
+    it('should allow initialization with Moment object', function() {
      const dr = moment.range(m1, m2);
 
      expect(moment.isMoment(dr.start)).to.be(true);
@@ -86,7 +85,7 @@ describe('constructor', function() {
     });
 
     /*
-        支持  某 年 季 度 月 天 时分 秒
+       todo: 支持  某 年 季 度 月 天 时分 秒
     it('should allow initialization with moment interval strings', function() {
      const date = moment('2016-12-12T11:12:18.607');
      const quarterStart = moment('2016-10-01T00:00:00.000');

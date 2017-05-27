@@ -66,7 +66,9 @@ describe('#reverseBy', function() {
     expect(acc).to.eql([2013, 2012, 2011]);
   });
 
-  // it('should iterate correctly by year over a moment()-constructed range when leap years are involved', function() {
+  // todo:check to readme
+    //
+    // it('should iterate correctly by year over a moment()-constructed range when leap years are involved', function() {
   //   const dr1 = DateRangeCreate(moment('2011', 'YYYY'), moment('2013', 'YYYY'));
   //
   //   const i1 = dr1.reverseBy('years');
