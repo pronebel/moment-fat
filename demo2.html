@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="./.source/moment/min/moment.min.js"></script>
-    <script src="./dist/moment-range.js"></script>
+    <script src="./.source/moment-range.js"></script>
     <script>
-      var DateRangeCreate = window.DateRange
+        window['moment-range'].extendMoment(moment);
+      var DateRangeCreate = moment.range;
     </script>
 </head>
 <body>

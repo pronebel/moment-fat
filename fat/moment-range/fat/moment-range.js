@@ -68,6 +68,7 @@ export class DateRange {
                 return {
                     next() {
                         const current = fake.add(fake.clone(range.start),(iteration * step), interval);
+                        console.log(current);
                         const done = exclusive
                             ? !(iteration < diff)
                             : !(iteration <= diff);
