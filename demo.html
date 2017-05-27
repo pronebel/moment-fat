@@ -12,29 +12,15 @@
 <body>
 
 <script>
-    var d1 = new Date(Date.UTC(2012, 2, 1));
-    var d2 = new Date(Date.UTC(2012, 2, 5));
-    var dr1 = DateRangeCreate(d1, d2);
-    console.log(dr1)
-    // Splat
-    var i1 = dr1.by('day');
-    console.log([...i1]);
+    const d1 = new Date(Date.UTC(2014, 9, 6, 0, 1));
+    const d2 = new Date(Date.UTC(2014, 9, 7, 0, 0));
+    const dr1 = DateRangeCreate(d1, d2);
+    const dr2 = new Date(15*60*1000)
+
+    const acc = Array.from(dr1.reverseByRange(dr2));
+    console.log(acc)
 
 
-
-  /*  // For/of
-    const i2 = dr1.by('day');
-    let i = 0;
-    for (let n of i2) {
-        i++;
-    }
-    expect(i).to.be(5);
-
-    // Array.from
-    const i3 = dr1.by('day');
-    const acc = Array.from(i3);
-    expect(acc.length).to.be(5);
-*/
 
 </script>
 </body>
