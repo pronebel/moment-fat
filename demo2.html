@@ -13,14 +13,11 @@
 <body>
 
 <script>
-    var d1 = new Date(Date.UTC(2012, 2, 1));
-    var d2 = new Date(Date.UTC(2012, 2, 5));
-    var dr1 = DateRangeCreate(d1, d2);
-    console.log(dr1)
-    // Splat
-    var i1 = dr1.by('day');
-    console.log([...i1]);
-
+    const date = moment('2016-12-12T11:12:18.607');
+    const quarterStart = moment('2016-10-01T00:00:00.000');
+    const quarterEnd = moment('2016-12-31T23:59:59.999');
+    const r = date.range('quarter');
+    console.log(r)
 
 
   /*  // For/of

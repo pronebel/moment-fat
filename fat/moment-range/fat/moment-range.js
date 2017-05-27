@@ -36,8 +36,8 @@ export class DateRange {
             }
         }
 
-        this.start = (s === null) ? new Date(-8640000000000000) : new Date(s);
-        this.end = (e === null) ? new Date(8640000000000000) : new Date(e);
+        this.start = (s === null) ? new Date(-8640000000000000) : (s===undefined?new Date():new Date(s));
+        this.end = (e === null) ? new Date(8640000000000000) :  (e===undefined?new Date():new Date(e));
     }
 
     adjacent(other) { // fake

@@ -24,12 +24,12 @@ const sStart = '1996-08-12T00:00:00.000Z';
 const sEnd = '2012-01-01T00:00:00.000Z';
 
 describe('constructor', function() {
-    /* it('should allow initialization with date string', function() {
-     const dr = moment.range(sStart, sEnd);
+    it('should allow initialization with date string', function() {
+        const dr = DateRangeCreate(sStart, sEnd);
 
-     expect(moment.isMoment(dr.start)).to.be(true);
-     expect(moment.isMoment(dr.end)).to.be(true);
-     });*/
+        expect(isDate(dr.start)).to.be(true);
+        expect(isDate(dr.end)).to.be(true);
+    });
 
     it('should allow initialization with Date object', function() {
         const dr = DateRangeCreate(d1, d2);
@@ -45,14 +45,14 @@ describe('constructor', function() {
      expect(moment.isMoment(dr.end)).to.be(true);
      });*/
 
-    /*it('should allow initialization with an ISO 8601 Time Interval string', function() {
-     const start = '2015-01-17T09:50:04+00:00';
-     const end   = '2015-04-17T08:29:55+00:00';
-     const dr = moment.range(start + '/' + end);
+    it('should allow initialization with an ISO 8601 Time Interval string', function() {// TODO: CHECK  native date support ?
+        const start = '2015-01-17T09:50:04+00:00';
+        const end   = '2015-04-17T08:29:55+00:00';
+        const dr = DateRangeCreate(start + '/' + end);
 
-     expect(moment.utc(start).isSame(dr.start)).to.be(true);
-     expect(moment.utc(end).isSame(dr.end)).to.be(true);
-     });*/
+        expect(fake.isSame(new Date(start),dr.start)).to.be(true);
+        expect(fake.isSame(new Date(end),dr.end)).to.be(true);
+    });
 
     it('should allow initialization with an array', function() {
         const dr = DateRangeCreate([d1, d2]);
@@ -85,7 +85,9 @@ describe('constructor', function() {
         expect(isDate(dr.end)).to.be(true);
     });
 
- /*    it('should allow initialization with moment interval strings', function() {
+    /*
+        支持  某 年 季 度 月 天 时分 秒
+    it('should allow initialization with moment interval strings', function() {
      const date = moment('2016-12-12T11:12:18.607');
      const quarterStart = moment('2016-10-01T00:00:00.000');
      const quarterEnd = moment('2016-12-31T23:59:59.999');
