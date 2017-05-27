@@ -19,7 +19,7 @@ export let clone = function (date) {
 }
 
 export let diff = function (sdate,input, units, asFloat) {
-    return moment(sdate).isSame(input, units,asFloat);
+    return moment(sdate).diff(input, units,asFloat);
 }
 
 export let add = function (sdate,val,units) {

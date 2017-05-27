@@ -48,32 +48,32 @@ describe('#by', function() {
     expect(acc.length).to.be(5);
   });
 
-  // it('should iterate correctly by shorthand string', function() {
-  //   const d1 = new Date(Date.UTC(2012, 2, 1));
-  //   const d2 = new Date(Date.UTC(2012, 2, 5));
-  //   const dr1 = DateRangeCreate(d1, d2);
-  //
-  //   const i1 = dr1.by('days');
-  //   const acc = Array.from(i1);
-  //
-  //   expect(acc.length).to.eql(5);
-  //   expect(acc[0].utc().date()).to.eql(1);
-  //   expect(acc[1].utc().date()).to.eql(2);
-  //   expect(acc[2].utc().date()).to.eql(3);
-  //   expect(acc[3].utc().date()).to.eql(4);
-  //   expect(acc[4].utc().date()).to.eql(5);
-  // });
+  it('should iterate correctly by shorthand string', function() {
+    const d1 = new Date(Date.UTC(2012, 2, 1));
+    const d2 = new Date(Date.UTC(2012, 2, 5));
+    const dr1 = DateRangeCreate(d1, d2);
 
-  // it('should iterate correctly by year over a Date-constructed range when leap years are involved', function() {
-  //   const d1 = new Date(Date.UTC(2011, 1, 1));
-  //   const d2 = new Date(Date.UTC(2013, 1, 1));
-  //   const dr1 = DateRangeCreate(d1, d2);
-  //
-  //   const i1 = dr1.by('years');
-  //   const acc = Array.from(i1).map(m => m.utc().year());
-  //
-  //   expect(acc).to.eql([2011, 2012, 2013]);
-  // });
+    const i1 = dr1.by('days');
+    const acc = Array.from(i1);
+
+    expect(acc.length).to.eql(5);
+    expect(acc[0].getUTCDate()).to.eql(1);
+    expect(acc[1].getUTCDate()).to.eql(2);
+    expect(acc[2].getUTCDate()).to.eql(3);
+    expect(acc[3].getUTCDate()).to.eql(4);
+    expect(acc[4].getUTCDate()).to.eql(5);
+  });
+
+  it('should iterate correctly by year over a Date-constructed range when leap years are involved', function() {
+    const d1 = new Date(Date.UTC(2011, 1, 1));
+    const d2 = new Date(Date.UTC(2013, 1, 1));
+    const dr1 = DateRangeCreate(d1, d2);
+
+    const i1 = dr1.by('years');
+    const acc = Array.from(i1).map(m => m.getUTCFullYear());
+
+    expect(acc).to.eql([2011, 2012, 2013]);
+  });
 
   // it('should iterate correctly by year over a moment()-constructed range when leap years are involved', function() {
   //   const dr1 = moment.range(moment('2011', 'YYYY'), moment('2013', 'YYYY'));
