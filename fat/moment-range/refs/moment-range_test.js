@@ -4,7 +4,7 @@
 
 import expect from 'expect.js';
 import M from 'moment';
-import { DateRange, extendMoment } from './fat/moment-range';
+import { DateRange, extendMoment } from '../fat/moment-range';
 
 const moment = extendMoment(M);
 
