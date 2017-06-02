@@ -5,7 +5,7 @@
 
 import expect from 'expect.js';
 
-import { DateRange,DateRangeCreate } from '../fat/moment-range';
+import { DateRange,DateRangeCreate } from '../fat/date-range';
 import * as fake  from '../fat/fake'
 
 

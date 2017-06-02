@@ -9,14 +9,28 @@ function absFloor (number) {
 
 function monthDiff(date1,date2){
     var eom, ret;
-    ret = (date1.getFullYear() - date2.getFullYear()) * 12;
-    ret += date1.getMonth() - date2.getMonth();
-    eom =  (new Date(date2.getFullYear(), date2.getMonth() + 1, 0)).getDate();
-    ret += (date1.getDate() / eom) - (date2.getDate() / eom);
+    ret = (date2.getFullYear() - date1.getFullYear()) * 12;
+    ret += date2.getMonth() - date1.getMonth();
+    eom =  (new Date(date2.getFullYear(), date1.getMonth() + 1, 0)).getDate();
+    ret += (date2.getDate() / eom) - (date1.getDate() / eom);
     return ret
 }
-
-export function DateDiff (date1,date2,units,asFloat){
+/**
+ *
+ * @param delta: millisecond
+ * @param units
+ * @returns {number}
+ */
+export function duration(delta,units){
+    let output = units === 'seconds' ? delta / 1e3 : // 1000
+        units === 'minutes' ? delta / 6e4 : // 1000 * 60
+            units === 'hours' ? delta / 36e5 : // 1000 * 60 * 60
+                units === 'days' ? delta / 864e5 : // 1000 * 60 * 60 * 24, negate dst
+                    units === 'weeks' ? delta / 6048e5 : // 1000 * 60 * 60 * 24 * 7, negate dst
+                        delta;
+    return output;
+}
+export function dateDuration (date1,date2,units,asFloat){
 
     let output ;
 
@@ -33,14 +47,9 @@ export function DateDiff (date1,date2,units,asFloat){
             output = output / 12;
         }
     } else {
-        var delta = Math.floor(date1 - date2);
+        output = duration(Math.floor(date1 - date2),units);
 
-        output = units === 'seconds' ? delta / 1e3 : // 1000
-            units === 'minutes' ? delta / 6e4 : // 1000 * 60
-                units === 'hours' ? delta / 36e5 : // 1000 * 60 * 60
-                    units === 'days' ? delta / 864e5 : // 1000 * 60 * 60 * 24, negate dst
-                        units === 'weeks' ? delta / 6048e5 : // 1000 * 60 * 60 * 24 * 7, negate dst
-                            delta;
+
     }
     return asFloat ? output : absFloor(output);
 
