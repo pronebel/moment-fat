@@ -47,7 +47,7 @@ module.exports = function(config) {
 
     reporters: ['dots'],
 
-    singleRun: false,
+    singleRun: true,
 
     webpack: webpackConfig,
 

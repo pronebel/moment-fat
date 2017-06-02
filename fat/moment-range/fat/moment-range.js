@@ -95,7 +95,7 @@ export class DateRange {
 
     isEqual(other) { // fake
         return (this.start.valueOf() === other.start.valueOf()) &&
-            (this.end.valueOf() === other.valueOf());
+            (this.end.valueOf() === other.end.valueOf());
     }
 
     isSame(other) { // no change
