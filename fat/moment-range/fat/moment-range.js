@@ -1,23 +1,3 @@
-import Symbol from 'es6-symbol';
-
-import * as fake  from './fake'
-
-//-----------------------------------------------------------------------------
-// Constants
-//-----------------------------------------------------------------------------
-
-const INTERVALS = {
-    year: true,
-    quarter: true,
-    month: true,
-    week: true,
-    day: true,
-    hour: true,
-    minute: true,
-    second: true
-};
-
-
 //-----------------------------------------------------------------------------
 // Date Ranges
 //-----------------------------------------------------------------------------
@@ -41,8 +21,8 @@ export class DateRange {
     }
 
     adjacent(other) { // fake
-        const sameStartEnd = fake.isSame(this.start, other.end);
-        const sameEndStart = fake.isSame(this.end, other.start);
+        const sameStartEnd = this.start.valueOf()=== other.end.valueOf();
+        const sameEndStart = this.end.valueOf() === other.start.valueOf();
 
         return (sameStartEnd && (other.start.valueOf() <= this.start.valueOf())) || (sameEndStart && (other.end.valueOf() >= this.end.valueOf()));
     }
@@ -82,14 +62,13 @@ export class DateRange {
 
         return (startInRange && endInRange);
     }
-    //todo: 考虑diff只管算出相差的毫秒值,至于 毫秒值是多少天,等交给专门的库去处理
+
     diff() { // fake
-        //return fake.diff(this.end, this.start, unit, rounded);
         return Math.floor(this.end.valueOf() - this.start.valueOf());
     }
 
-    duration(unit, rounded) { // no change
-        return this.diff(unit, rounded);
+    duration() { // no change
+        return this.diff();
     }
 
     intersect(other) { //no change
@@ -115,7 +94,8 @@ export class DateRange {
     }
 
     isEqual(other) { // fake
-        return fake.isSame(this.start,other.start) && fake.isSame(this.end,other.end);
+        return (this.start.valueOf() === other.start.valueOf()) &&
+            (this.end.valueOf() === other.valueOf());
     }
 
     isSame(other) { // no change
@@ -173,46 +153,7 @@ export class DateRange {
     }
 }
 
-
-//-----------------------------------------------------------------------------
-// Moment Extensions
-//-----------------------------------------------------------------------------
-
 export function DateRangeCreate(start, end) {
     return new DateRange(start, end);
 }
 window.DateRange = DateRangeCreate;
-
-export function extendMoment(moment) {
-    /**
-     * Build a date range.
-     */
-    moment.range = function range(start, end) {
-        const m = this;
-
-        if (INTERVALS.hasOwnProperty(start)) {
-            return new DateRange(moment(m).startOf(start), moment(m).endOf(start));
-        }
-
-        return new DateRange(start, end);
-    };
-
-    /**
-     * Alias of static constructor.
-     */
-    moment.fn.range = moment.range;
-
-    /**
-     * Expose constructor
-     */
-    moment.range.constructor = DateRange;
-
-    /**
-     * Check if the current moment is within a given date range.
-     */
-    moment.fn.within = function (range) {
-        return range.contains(this.toDate());
-    };
-
-    return moment;
-}
