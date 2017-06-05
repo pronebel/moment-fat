@@ -25,3 +25,8 @@ https://github.com/icambron/twix.js
 ### todo:
 
 compare: Math.min(date1,date2)  vs   moment.min(m1,m2)
+
+## Date Plugin:
+
+fecha format:  https://github.com/taylorhakes/fecha
+date math: https://github.com/jquense/date-math
